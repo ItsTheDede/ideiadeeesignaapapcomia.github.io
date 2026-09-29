@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoLeiria — Marketplace Automóvel</title>
+<style>
+  :root{
+    --azul:#0B3D5C;
+    --verde:#4C9A6A;
+    --laranja:#E8743B;
+    --fundo:#F5F7F8;
+    --texto:#1E2A33;
+    --cinza:#8894A0;
+    --card:#ffffff;
+    --borda:#e3e8ec;
+    --sombra:0 4px 16px rgba(11,61,92,.08);
+  }
+  body.dark{
+    --azul:#7FC4E8;
+    --verde:#5FBF85;
+    --laranja:#F08850;
+    --fundo:#0F1A24;
+    --texto:#E6EDF3;
+    --cinza:#8B9BAA;
+    --card:#152330;
+    --borda:#243544;
+    --sombra:0 4px 16px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:var(--fundo);
+    color:var(--texto);
+    line-height:1.5;
+    transition:background .3s, color .3s;
+    min-height:100vh;
+  }
+
+  /* HEADER */
+  header{
+    background:var(--card);
+    border-bottom:1px solid var(--borda);
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:var(--sombra);
+    transition:background .3s, border-color .3s;
+  }
+
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-weight:800;font-size:19px;color:var(--azul);
+    white-space:nowrap;
+  }
+  .logo-icon{
+    width:36px;height:36px;border-radius:50%;
+    background:linear-gradient(135deg,var(--azul),var(--verde));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:18px;
+  }
+
+  .search-bar{
+    flex:1;display:flex;background:var(--fundo);
+    border:2px solid transparent;border-radius:12px;padding:4px;
+    transition:border-color .2s;
+  }
+  .search-bar:focus-within{border-color:var(--laranja)}
+  .search-bar input{
+    flex:1;border:none;background:transparent;padding:10px 14px;
+    font-size:15px;outline:none;color:var(--texto);
+  }
+  .search-bar input::placeholder{color:var(--cinza)}
+  .search-bar button{
+    background:var(--laranja);color:#fff;border:none;padding:10px 20px;
+    border-radius:8px;font-weight:600;cursor:pointer;
+  }
+
+  .header-actions{display:flex;gap:8px;align-items:center}
+
+  .icon-btn{
+    background:var(--fundo);border:none;width:42px;height:42px;
+    border-radius:10px;cursor:pointer;font-size:18px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--texto);transition:background .2s;
+  }
+  .icon-btn:hover{background:var(--borda)}
+
+  /* BOTÃO DARK MODE */
+  #themeToggle{
+    background:var(--fundo);
+    border:2px solid var(--borda);
+    width:46px;height:46px;border-radius:12px;
+    cursor:pointer;font-size:20px;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .3s;
+    color:var(--texto);
+  }
+  #themeToggle:hover{
+    background:var(--laranja);
+    border-color:var(--laranja);
+    transform:scale(1.05);
+  }
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,#0B3D5C,#124a6e);
+    color:#fff;padding:60px 24px 80px;text-align:center;
+    transition:background .3s;
+  }
+  body.dark .hero{
+    background:linear-gradient(135deg,#0a1620,#0f2233);
+  }
+  .hero h1{
+    font-size:clamp(28px,5vw,46px);font-weight:800;
+    line-height:1.15;margin-bottom:16px;
+  }
+  .hero h1 span{color:#7ed4a1}
+  .hero p{font-size:17px;opacity:.9;margin-bottom:32px}
+
+  /* CONTAINER */
+  .container{max-width:1280px;margin:0 auto;padding:40px 24px}
+
+  .section-title{
+    font-size:22px;font-weight:700;margin-bottom:20px;
+    color:var(--azul);
+  }
+
+  /* CATEGORIAS */
+  .categorias{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:14px;margin-bottom:50px;
+  }
+  .categoria{
+    background:var(--card);
+    border-radius:12px;
+    padding:20px 12px;
+    text-align:center;
+    cursor:pointer;
+    border:2px solid transparent;
+    box-shadow:var(--sombra);
+    transition:all .2s;
+  }
+  .categoria:hover{
+    transform:translateY(-4px);
+    border-color:var(--verde);
+  }
+  .categoria-emoji{font-size:30px;display:block;margin-bottom:8px}
+  .categoria-nome{font-size:13px;font-weight:600;color:var(--texto)}
+
+  /* PEÇAS */
+  .pecas-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:20px;margin-bottom:50px;
+  }
+  .peca{
+    background:var(--card);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:var(--sombra);
+    transition:transform .2s, box-shadow .2s, background .3s;
+  }
+  .peca:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 28px rgba(11,61,92,.16);
+  }
+  .peca-img{
+    height:170px;
+    background:linear-gradient(135deg,#e8eef2,#d4dde4);
+    display:flex;align-items:center;justify-content:center;
+    font-size:60px;position:relative;
+    transition:background .3s;
+  }
+  body.dark .peca-img{
+    background:linear-gradient(135deg,#1c2d3d,#243544);
+  }
+  .peca-badge{
+    position:absolute;top:12px;left:12px;
+    padding:5px 12px;border-radius:20px;
+    font-size:11px;font-weight:700;text-transform:uppercase;
+  }
+  .badge-recond{background:#d4f0de;color:#1e6b3e}
+  body.dark .badge-recond{background:#1e4d33;color:#7ed4a1}
+  .peca-body{padding:16px}
+  .peca-titulo{font-weight:700;font-size:15px;margin-bottom:4px;color:var(--texto)}
+  .peca-ref{
+    font-family:monospace;font-size:11px;color:var(--cinza);
+    margin-bottom:10px;
+  }
+  .peca-footer{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:12px;padding-top:12px;
+    border-top:1px solid var(--borda);
+  }
+  .peca-preco{font-size:20px;font-weight:800;color:var(--azul)}
+  .btn-reservar{
+    background:var(--verde);color:#fff;border:none;
+    padding:9px 14px;border-radius:8px;
+    font-weight:600;font-size:13px;cursor:pointer;
+  }
+
+  /* INFO BOX */
+  .info-box{
+    background:var(--card);
+    border-radius:12px;
+    padding:30px;
+    text-align:center;
+    box-shadow:var(--sombra);
+    color:var(--texto);
+    transition:background .3s;
+  }
+  .info-box h3{margin-bottom:8px;color:var(--azul)}
+  .info-box p{color:var(--cinza);font-size:14px}
+
+  /* FOOTER */
+  footer{
+    background:var(--azul);color:#fff;
+    padding:30px 24px;text-align:center;font-size:13px;
+    transition:background .3s;
+  }
+
+  @media(max-width:720px){
+    header{padding:12px 16px;flex-wrap:wrap}
+    .search-bar{order:3;width:100%}
+    .container{padding:24px 16px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">♻</div>
+    <span>AutoLeiria</span>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Pesquisar peças, marcas, refª OEM…">
+    <button>🔍</button>
+  </div>
+
+  <div class="header-actions">
+    <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    <button class="icon-btn">🗺️</button>
+    <button class="icon-btn">👤</button>
+    <button class="icon-btn">🛒</button>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>A peça certa. Do vizinho certo. <span>Hoje.</span></h1>
+  <p>Marketplace hiperlocal de peças automóveis usadas e recondicionadas · Leiria</p>
+</section>
+
+<div class="container">
+  <h2 class="section-title">📦 Categorias</h2>
+  <div class="categorias">
+    <div class="categoria"><span class="categoria-emoji">⚙️</span><span class="categoria-nome">Motor</span></div>
+    <div class="categoria"><span class="categoria-emoji">🛑</span><span class="categoria-nome">Travagem</span></div>
+    <div class="categoria"><span class="categoria-emoji">💡</span><span class="categoria-nome">Ótica</span></div>
+    <div class="categoria"><span class="categoria-emoji">🔧</span><span class="categoria-nome">Suspensão</span></div>
+    <div class="categoria"><span class="categoria-emoji">🛞</span><span class="categoria-nome">Jantes</span></div>
+    <div class="categoria"><span class="categoria-emoji">🔌</span><span class="categoria-nome">Eletrónica</span></div>
+  </div>
+
+  <h2 class="section-title">🔍 Peças disponíveis</h2>
+  <div class="pecas-grid">
+    <div class="peca">
+      <div class="peca-img">
+        🔋
+        <span class="peca-badge badge-recond">♻️ Recondicionado</span>
+      </div>
+      <div class="peca-body">
+        <h3 class="peca-titulo">Alternador BMW 320d E90</h3>
+        <div class="peca-ref">Ref: Bosch 0124 525 068</div>
+        <div class="peca-footer">
+          <div class="peca-preco">180 €</div>
+          <button class="btn-reservar">Reservar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="peca">
+      <div class="peca-img">
+        🛑
+        <span class="peca-badge badge-recond">♻️ Novo</span>
+      </div>
+      <div class="peca-body">
+        <h3 class="peca-titulo">Discos de travão Brembo (par)</h3>
+        <div class="peca-ref">Ref: Brembo 09.A417.11</div>
+        <div class="peca-footer">
+          <div class="peca-preco">210 €</div>
+          <button class="btn-reservar">Reservar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="peca">
+      <div class="peca-img">
+        💡
+        <span class="peca-badge badge-recond">♻️ Recondicionado</span>
+      </div>
+      <div class="peca-body">
+        <h3 class="peca-titulo">Farol VW Golf VI</h3>
+        <div class="peca-ref">Ref: VW 5K1 941 005</div>
+        <div class="peca-footer">
+          <div class="peca-preco">140 €</div>
+          <button class="btn-reservar">Reservar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <h3>♻️ Impacto Circular</h3>
+    <p>12 430 peças reutilizadas · 340t CO₂ evitado · 89 PMEs ativas</p>
+  </div>
+</div>
+
+<footer>
+  <strong>AutoLeiria Circular</strong> · A peça certa, do vizinho certo, hoje.
+</footer>
+
+<script>
+function toggleTheme(){
+  var body = document.body;
+  var btn = document.getElementById('themeToggle');
+
+  if(body.classList.contains('dark')){
+    body.classList.remove('dark');
+    btn.textContent = '🌙';
+  } else {
+    body.classList.add('dark');
+    btn.textContent = '☀️';
+  }
+}
+
+// Aplica tema do sistema ao abrir
+window.addEventListener('DOMContentLoaded', function(){
+  var prefereDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if(prefereDark){
+    document.body.classList.add('dark');
+    document.getElementById('themeToggle').textContent = '☀️';
+  }
+});
+</script>
+
+</body>
+</html>
