@@ -6,26 +6,33 @@
 <title>AutoLeiria — Marketplace Automóvel B2B</title>
 <style>
   :root{
-    --azul:#0B3D5C;
-    --verde:#4C9A6A;
-    --laranja:#E8743B;
-    --fundo:#F5F7F8;
-    --texto:#1E2A33;
-    --cinza:#8894A0;
-    --card:#ffffff;
-    --borda:#e3e8ec;
-    --sombra:0 4px 16px rgba(11,61,92,.08);
+    /* Cores principais */
+    --azul:#1E3A5F;
+    --verde:#2E8B57;
+    --laranja:#E07A3F;
+
+    /* Fundo e texto */
+    --fundo:#F7F8FA;
+    --texto:#1A2332;
+    --cinza:#7A8694;
+
+    /* Superfícies */
+    --card:#FFFFFF;
+    --borda:#E5E9EF;
+    --sombra:0 2px 12px rgba(30,58,95,.06);
   }
   body.dark{
-    --azul:#7FC4E8;
-    --verde:#5FBF85;
-    --laranja:#F08850;
-    --fundo:#0F1A24;
-    --texto:#E6EDF3;
-    --cinza:#8B9BAA;
-    --card:#152330;
-    --borda:#243544;
-    --sombra:0 4px 16px rgba(0,0,0,.35);
+    --azul:#7FB3E0;
+    --verde:#5FCB8E;
+    --laranja:#F0945A;
+
+    --fundo:#0E1620;
+    --texto:#E8EDF2;
+    --cinza:#8A98A8;
+
+    --card:#182230;
+    --borda:#243040;
+    --sombra:0 2px 12px rgba(0,0,0,.4);
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
@@ -69,7 +76,7 @@
   .search-bar{
     flex:1;display:flex;background:var(--fundo);
     border:2px solid transparent;border-radius:12px;padding:4px;
-    transition:border-color .2s;
+    transition:border-color .2s, background .3s;
   }
   .search-bar:focus-within{border-color:var(--laranja)}
   .search-bar input{
@@ -80,7 +87,9 @@
   .search-bar button{
     background:var(--laranja);color:#fff;border:none;padding:10px 20px;
     border-radius:8px;font-weight:600;cursor:pointer;
+    transition:filter .2s;
   }
+  .search-bar button:hover{filter:brightness(.92)}
 
   .header-actions{display:flex;gap:8px;align-items:center}
 
@@ -104,23 +113,25 @@
   #themeToggle:hover{
     background:var(--laranja);
     border-color:var(--laranja);
+    color:#fff;
     transform:scale(1.05);
   }
 
   /* HERO */
   .hero{
-    background:linear-gradient(135deg,#0B3D5C,#124a6e);
+    background:linear-gradient(135deg,#1E3A5F 0%,#2C5282 100%);
     color:#fff;padding:60px 24px 80px;text-align:center;
     transition:background .3s;
   }
   body.dark .hero{
-    background:linear-gradient(135deg,#0a1620,#0f2233);
+    background:linear-gradient(135deg,#0B1723 0%,#152A42 100%);
   }
   .hero h1{
     font-size:clamp(28px,5vw,46px);font-weight:800;
     line-height:1.15;margin-bottom:16px;
+    letter-spacing:-.5px;
   }
-  .hero h1 span{color:#7ed4a1}
+  .hero h1 span{color:#7FD3A5}
   .hero p{font-size:17px;opacity:.9;margin-bottom:32px}
 
   /* CONTAINER */
@@ -129,6 +140,7 @@
   .section-title{
     font-size:22px;font-weight:700;margin-bottom:20px;
     color:var(--azul);
+    display:flex;align-items:center;gap:10px;
   }
 
   /* ============ EMPRESAS ============ */
@@ -152,7 +164,7 @@
   }
   .empresa:hover{
     transform:translateY(-4px);
-    box-shadow:0 8px 28px rgba(11,61,92,.16);
+    box-shadow:0 8px 28px rgba(30,58,95,.14);
   }
 
   .empresa-logo{
@@ -164,9 +176,9 @@
     align-items:center;
     justify-content:center;
     font-weight:800;
-    font-size:20px;
+    font-size:18px;
     flex-shrink:0;
-    letter-spacing:-1px;
+    letter-spacing:-.5px;
   }
 
   .empresa-info{flex:1;min-width:0}
@@ -182,8 +194,8 @@
   }
 
   .empresa-badge{
-    background:#d4e5f7;
-    color:#1e4d80;
+    background:#DCEAF7;
+    color:#1E4D80;
     font-size:10px;
     font-weight:700;
     padding:3px 8px;
@@ -192,8 +204,8 @@
     letter-spacing:.3px;
   }
   body.dark .empresa-badge{
-    background:#1a3555;
-    color:#8fc3f0;
+    background:#1A3555;
+    color:#8FC3F0;
   }
 
   .empresa-tipo{
@@ -265,7 +277,7 @@
   }
 
   .sobre-destaque{
-    background:linear-gradient(135deg, #e8f5ee, #d4f0de);
+    background:linear-gradient(135deg, #E6F5EC, #D2EDDD);
     border-radius:12px;
     padding:20px 24px;
     margin-top:24px;
@@ -273,12 +285,13 @@
     align-items:center;
     gap:14px;
     font-size:14px;
-    color:#1e6b3e;
+    color:#1E6B3E;
     font-weight:600;
+    transition:background .3s, color .3s;
   }
   body.dark .sobre-destaque{
-    background:linear-gradient(135deg, #1a3d2a, #1e4d33);
-    color:#7ed4a1;
+    background:linear-gradient(135deg, #162A20, #1A3D2A);
+    color:#7FD3A5;
   }
 
   .sobre-destaque span:first-child{font-size:28px}
@@ -302,6 +315,7 @@
   .categoria:hover{
     transform:translateY(-4px);
     border-color:var(--verde);
+    box-shadow:0 8px 24px rgba(46,139,87,.15);
   }
   .categoria-emoji{font-size:30px;display:block;margin-bottom:8px}
   .categoria-nome{font-size:13px;font-weight:600;color:var(--texto)}
@@ -323,27 +337,28 @@
   }
   .peca:hover{
     transform:translateY(-4px);
-    box-shadow:0 8px 28px rgba(11,61,92,.16);
+    box-shadow:0 8px 28px rgba(30,58,95,.14);
   }
   .peca-img{
     height:170px;
-    background:linear-gradient(135deg,#e8eef2,#d4dde4);
+    background:linear-gradient(135deg,#EBEFF5,#DCE3EC);
     display:flex;align-items:center;justify-content:center;
     font-size:60px;position:relative;
     transition:background .3s;
   }
   body.dark .peca-img{
-    background:linear-gradient(135deg,#1c2d3d,#243544);
+    background:linear-gradient(135deg,#1C2A3A,#243244);
   }
   .peca-badge{
     position:absolute;top:12px;left:12px;
     padding:5px 12px;border-radius:20px;
     font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.3px;
   }
-  .badge-recond{background:#d4f0de;color:#1e6b3e}
-  body.dark .badge-recond{background:#1e4d33;color:#7ed4a1}
-  .badge-novo{background:#d4e5f7;color:#1e4d80}
-  body.dark .badge-novo{background:#1a3555;color:#8fc3f0}
+  .badge-recond{background:#D2F0DE;color:#1E6B3E}
+  body.dark .badge-recond{background:#1E4D33;color:#7FD3A5}
+  .badge-novo{background:#DCEAF7;color:#1E4D80}
+  body.dark .badge-novo{background:#1A3555;color:#8FC3F0}
 
   .peca-empresa{
     position:absolute;
@@ -388,7 +403,9 @@
     background:var(--verde);color:#fff;border:none;
     padding:9px 14px;border-radius:8px;
     font-weight:600;font-size:13px;cursor:pointer;
+    transition:filter .2s;
   }
+  .btn-reservar:hover{filter:brightness(.92)}
 
   /* INFO BOX */
   .info-box{
@@ -399,6 +416,7 @@
     box-shadow:var(--sombra);
     color:var(--texto);
     transition:background .3s;
+    border-top:3px solid var(--verde);
   }
   .info-box h3{margin-bottom:8px;color:var(--azul)}
   .info-box p{color:var(--cinza);font-size:14px}
@@ -409,6 +427,7 @@
     padding:30px 24px;text-align:center;font-size:13px;
     transition:background .3s;
   }
+  body.dark footer{background:#0B1723}
 
   @media(max-width:720px){
     header{padding:12px 16px;flex-wrap:wrap}
@@ -451,7 +470,7 @@
   <h2 class="section-title">🏢 Empresas parceiras</h2>
   <div class="empresas">
 
-    <div class="empresa" style="--empresa-cor:#0B3D5C">
+    <div class="empresa" style="--empresa-cor:#2C5282">
       <div class="empresa-logo">GP</div>
       <div class="empresa-info">
         <div class="empresa-nome">
@@ -460,14 +479,14 @@
         </div>
         <div class="empresa-tipo">CAMV · Centro de Abate de Veículos</div>
         <div class="empresa-stats">
-          <span>📍 <strong>Guia</strong></span>
+          <span>📍 <strong>Leiria</strong></span>
           <span>📦 <strong>1 240</strong> peças</span>
           <span>★ <strong>4.8</strong></span>
         </div>
       </div>
     </div>
 
-    <div class="empresa" style="--empresa-cor:#4C9A6A">
+    <div class="empresa" style="--empresa-cor:#38A169">
       <div class="empresa-logo">GaP</div>
       <div class="empresa-info">
         <div class="empresa-nome">
@@ -476,14 +495,14 @@
         </div>
         <div class="empresa-tipo">Retificadora · Recondicionamento de motores</div>
         <div class="empresa-stats">
-          <span>📍 <strong>Pomnal</strong></span>
+          <span>📍 <strong>Marinha Grande</strong></span>
           <span>📦 <strong>860</strong> peças</span>
           <span>★ <strong>4.9</strong></span>
         </div>
       </div>
     </div>
 
-    <div class="empresa" style="--empresa-cor:#E8743B">
+    <div class="empresa" style="--empresa-cor:#DD6B20">
       <div class="empresa-logo">SP</div>
       <div class="empresa-info">
         <div class="empresa-nome">
@@ -539,6 +558,12 @@
            CO₂, poupamos matérias-primas e prolongamos a vida útil dos veículos.</p>
       </div>
     </div>
+
+    <div class="sobre-destaque">
+      <span>🌱</span>
+      <span>Juntos, já evitámos <strong>340 toneladas de CO₂</strong> e reutilizámos
+            <strong>12 430 peças</strong> — um impacto real na economia circular da região.</span>
+    </div>
   </div>
 
   <!-- ============ CATEGORIAS ============ -->
@@ -556,7 +581,7 @@
   <h2 class="section-title">🔍 Peças disponíveis</h2>
   <div class="pecas-grid">
 
-    <div class="peca" style="--empresa-cor:#0B3D5C">
+    <div class="peca" style="--empresa-cor:#2C5282">
       <div class="peca-img">
         🔋
         <span class="peca-badge badge-recond">♻️ Recondicionado</span>
@@ -575,7 +600,7 @@
       </div>
     </div>
 
-    <div class="peca" style="--empresa-cor:#4C9A6A">
+    <div class="peca" style="--empresa-cor:#38A169">
       <div class="peca-img">
         🛑
         <span class="peca-badge badge-novo">✨ Novo</span>
@@ -594,7 +619,7 @@
       </div>
     </div>
 
-    <div class="peca" style="--empresa-cor:#E8743B">
+    <div class="peca" style="--empresa-cor:#DD6B20">
       <div class="peca-img">
         💡
         <span class="peca-badge badge-recond">♻️ Recondicionado</span>
@@ -613,7 +638,7 @@
       </div>
     </div>
 
-    <div class="peca" style="--empresa-cor:#0B3D5C">
+    <div class="peca" style="--empresa-cor:#2C5282">
       <div class="peca-img">
         ⚙️
         <span class="peca-badge badge-recond">♻️ Recondicionado</span>
@@ -632,7 +657,7 @@
       </div>
     </div>
 
-    <div class="peca" style="--empresa-cor:#4C9A6A">
+    <div class="peca" style="--empresa-cor:#38A169">
       <div class="peca-img">
         🔧
         <span class="peca-badge badge-novo">✨ Novo</span>
@@ -651,7 +676,7 @@
       </div>
     </div>
 
-    <div class="peca" style="--empresa-cor:#E8743B">
+    <div class="peca" style="--empresa-cor:#DD6B20">
       <div class="peca-img">
         🔌
         <span class="peca-badge badge-recond">♻️ Recondicionado</span>
