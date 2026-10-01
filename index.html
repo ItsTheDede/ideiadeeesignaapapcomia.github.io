@@ -173,7 +173,7 @@
         <div class="empresa-nome">GuiPeças <span class="empresa-badge">✅ Verificado</span></div>
         <div class="empresa-tipo">Comércio de peças e acessórios</div>
         <div class="empresa-stats">
-          <span>📍 <strong>Pombal</strong></span>
+          <span>📍 <strong>Guia, Pombal</strong></span>
           <span>📦 <strong>1 240</strong> peças</span>
           <span>★ <strong>4.8</strong></span>
         </div>
@@ -185,7 +185,7 @@
         <div class="empresa-nome">GamiPeças <span class="empresa-badge">✅ Verificado</span></div>
         <div class="empresa-tipo">Retificadora · Recondicionamento de motores</div>
         <div class="empresa-stats">
-          <span>📍 <strong>Marinha Grande</strong></span>
+          <span>📍 <strong>Pombal</strong></span>
           <span>📦 <strong>860</strong> peças</span>
           <span>★ <strong>4.9</strong></span>
         </div>
@@ -208,7 +208,7 @@
   <!-- MAPA -->
   <div class="mapa-wrapper">
     <div class="mapa-header">
-      <h2>🗺️ Lojas físicas em Leiria e região</h2>
+      <h2>🗺️ Lojas físicas em Pombal</h2>
       <div class="mapa-legenda">
         <span><span class="legenda-pin" style="background:#2C5282"></span> GuiPeças</span>
         <span><span class="legenda-pin" style="background:#38A169"></span> GamiPeças</span>
@@ -269,7 +269,7 @@
       <div class="peca-body">
         <h3 class="peca-titulo">Discos de travão Brembo (par)</h3>
         <div class="peca-ref">Ref: Brembo 09.A417.11</div>
-        <div class="peca-vendedor"><span class="dot"></span> GamiPeças · 📍 Marinha Grande</div>
+        <div class="peca-vendedor"><span class="dot"></span> GamiPeças · 📍 Pombal</div>
         <div class="peca-footer"><div class="peca-preco">210 €</div><button class="btn-reservar">Reservar</button></div>
       </div>
     </div>
@@ -303,7 +303,7 @@ function toggleTheme(){
 }
 
 function initMapa(){
-  var map = L.map('mapa', { scrollWheelZoom: false }).setView([39.743, -8.807], 10);
+  var map = L.map('mapa', { scrollWheelZoom: false }).setView([39.916, -8.628], 13);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap', maxZoom: 19
   }).addTo(map);
@@ -313,26 +313,26 @@ function initMapa(){
     {
       nome: 'GuiPeças',
       tipo: 'Comércio de peças e acessórios',
-      coords: [39.8698, -8.9323], // Pombal (Av. N.ª Sr.ª da Guia)[citation:5]
+      coords: [39.8950, -8.6520],
       cor: '#2C5282',
       sigla: 'GP',
-      info: '📍 Pombal · 📦 1 240 peças · ★ 4.8'
+      info: '📍 Av. Nossa Sra. da Guia 124 · Pombal · 📦 1 240 peças · ★ 4.8'
     },
     {
       nome: 'GamiPeças',
       tipo: 'Retificadora · Recondicionamento de motores',
-      coords: [39.7497, -8.9330], // Marinha Grande (referência)
+      coords: [39.9163, -8.6285],
       cor: '#38A169',
       sigla: 'GaP',
-      info: '📍 Marinha Grande · 📦 860 peças · ★ 4.9'
+      info: '📍 R. António Champalimaud, Lote 15A · Pombal · 📦 860 peças · ★ 4.9'
     },
     {
       nome: 'SamiParts',
       tipo: 'Comércio de peças auto',
-      coords: [39.9160, -8.6280], // Pombal (Flandes)[citation:3][citation:7][citation:17]
+      coords: [39.9168, -8.6278],
       cor: '#DD6B20',
       sigla: 'SP',
-      info: '📍 Pombal · 📦 540 peças · ★ 4.7'
+      info: '📍 Rua da Primavera, Bloco B1 (Flandes) · Pombal · 📦 540 peças · ★ 4.7'
     }
   ];
 
