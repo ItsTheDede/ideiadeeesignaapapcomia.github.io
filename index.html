@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoLeiria — Marketplace Automóvel</title>
+<title>AutoLeiria — Marketplace Automóvel B2B</title>
 <style>
   :root{
     --azul:#0B3D5C;
@@ -92,7 +92,6 @@
   }
   .icon-btn:hover{background:var(--borda)}
 
-  /* BOTÃO DARK MODE */
   #themeToggle{
     background:var(--fundo);
     border:2px solid var(--borda);
@@ -132,6 +131,85 @@
     color:var(--azul);
   }
 
+  /* ============ EMPRESAS / VENDEDORES ============ */
+  .empresas{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    margin-bottom:50px;
+  }
+
+  .empresa{
+    background:var(--card);
+    border-radius:14px;
+    padding:22px;
+    box-shadow:var(--sombra);
+    border-top:4px solid var(--empresa-cor, var(--azul));
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    transition:transform .2s, box-shadow .2s, background .3s;
+  }
+  .empresa:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 28px rgba(11,61,92,.16);
+  }
+
+  .empresa-logo{
+    width:56px;height:56px;
+    border-radius:14px;
+    background:var(--empresa-cor, var(--azul));
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:20px;
+    flex-shrink:0;
+    letter-spacing:-1px;
+  }
+
+  .empresa-info{flex:1;min-width:0}
+  .empresa-nome{
+    font-weight:800;
+    font-size:16px;
+    margin-bottom:4px;
+    color:var(--texto);
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+
+  .empresa-badge{
+    background:#d4e5f7;
+    color:#1e4d80;
+    font-size:10px;
+    font-weight:700;
+    padding:3px 8px;
+    border-radius:10px;
+    text-transform:uppercase;
+    letter-spacing:.3px;
+  }
+  body.dark .empresa-badge{
+    background:#1a3555;
+    color:#8fc3f0;
+  }
+
+  .empresa-tipo{
+    font-size:12px;
+    color:var(--cinza);
+    margin-bottom:8px;
+  }
+  .empresa-stats{
+    display:flex;
+    gap:14px;
+    font-size:12px;
+    color:var(--cinza);
+    flex-wrap:wrap;
+  }
+  .empresa-stats span strong{color:var(--texto)}
+
   /* CATEGORIAS */
   .categorias{
     display:grid;
@@ -167,6 +245,8 @@
     overflow:hidden;
     box-shadow:var(--sombra);
     transition:transform .2s, box-shadow .2s, background .3s;
+    display:flex;
+    flex-direction:column;
   }
   .peca:hover{
     transform:translateY(-4px);
@@ -189,15 +269,46 @@
   }
   .badge-recond{background:#d4f0de;color:#1e6b3e}
   body.dark .badge-recond{background:#1e4d33;color:#7ed4a1}
-  .peca-body{padding:16px}
+  .badge-novo{background:#d4e5f7;color:#1e4d80}
+  body.dark .badge-novo{background:#1a3555;color:#8fc3f0}
+
+  /* TAG DA EMPRESA na peça */
+  .peca-empresa{
+    position:absolute;
+    top:12px;
+    right:12px;
+    background:var(--empresa-cor, var(--azul));
+    color:#fff;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.3px;
+  }
+
+  .peca-body{padding:16px;display:flex;flex-direction:column;flex:1}
   .peca-titulo{font-weight:700;font-size:15px;margin-bottom:4px;color:var(--texto)}
   .peca-ref{
     font-family:monospace;font-size:11px;color:var(--cinza);
     margin-bottom:10px;
   }
+  .peca-vendedor{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:12px;
+    color:var(--cinza);
+    margin-bottom:12px;
+  }
+  .peca-vendedor .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--empresa-cor, var(--azul));
+    display:inline-block;
+  }
+
   .peca-footer{
     display:flex;justify-content:space-between;align-items:center;
-    margin-top:12px;padding-top:12px;
+    margin-top:auto;padding-top:12px;
     border-top:1px solid var(--borda);
   }
   .peca-preco{font-size:20px;font-weight:800;color:var(--azul)}
@@ -256,11 +367,67 @@
 </header>
 
 <section class="hero">
-  <h1>A peça certa. Do vizinho certo. <span>Hoje.</span></h1>
-  <p>Marketplace hiperlocal de peças automóveis usadas e recondicionadas · Leiria</p>
+  <h1>A peça certa. Do parceiro certo. <span>Hoje.</span></h1>
+  <p>Marketplace B2B de peças automóveis · GuiPeças · GamiPeças · SamiParts · Leiria</p>
 </section>
 
 <div class="container">
+
+  <!-- ============ EMPRESAS PARCEIRAS ============ -->
+  <h2 class="section-title">🏢 Empresas parceiras</h2>
+  <div class="empresas">
+
+    <div class="empresa" style="--empresa-cor:#0B3D5C">
+      <div class="empresa-logo">GP</div>
+      <div class="empresa-info">
+        <div class="empresa-nome">
+          GuiPeças
+          <span class="empresa-badge">✅ Verificado</span>
+        </div>
+        <div class="empresa-tipo">CAMV · Centro de Abate de Veículos</div>
+        <div class="empresa-stats">
+          <span>📍 <strong>Leiria</strong></span>
+          <span>📦 <strong>1 240</strong> peças</span>
+          <span>★ <strong>4.8</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="empresa" style="--empresa-cor:#4C9A6A">
+      <div class="empresa-logo">GaP</div>
+      <div class="empresa-info">
+        <div class="empresa-nome">
+          GamiPeças
+          <span class="empresa-badge">✅ Verificado</span>
+        </div>
+        <div class="empresa-tipo">Retificadora · Recondicionamento de motores</div>
+        <div class="empresa-stats">
+          <span>📍 <strong>Marinha Grande</strong></span>
+          <span>📦 <strong>860</strong> peças</span>
+          <span>★ <strong>4.9</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="empresa" style="--empresa-cor:#E8743B">
+      <div class="empresa-logo">SP</div>
+      <div class="empresa-info">
+        <div class="empresa-nome">
+          SamiParts
+          <span class="empresa-badge">✅ Verificado</span>
+        </div>
+        <div class="empresa-tipo">Recondicionador especializado · Eletrónica</div>
+        <div class="empresa-stats">
+          <span>📍 <strong>Pombal</strong></span>
+          <span>📦 <strong>540</strong> peças</span>
+          <span>★ <strong>4.7</strong></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ CATEGORIAS ============ -->
   <h2 class="section-title">📦 Categorias</h2>
   <div class="categorias">
     <div class="categoria"><span class="categoria-emoji">⚙️</span><span class="categoria-nome">Motor</span></div>
@@ -271,16 +438,23 @@
     <div class="categoria"><span class="categoria-emoji">🔌</span><span class="categoria-nome">Eletrónica</span></div>
   </div>
 
+  <!-- ============ PEÇAS ============ -->
   <h2 class="section-title">🔍 Peças disponíveis</h2>
   <div class="pecas-grid">
-    <div class="peca">
+
+    <!-- PEÇA 1 — GuiPeças -->
+    <div class="peca" style="--empresa-cor:#0B3D5C">
       <div class="peca-img">
         🔋
         <span class="peca-badge badge-recond">♻️ Recondicionado</span>
+        <span class="peca-empresa">GuiPeças</span>
       </div>
       <div class="peca-body">
         <h3 class="peca-titulo">Alternador BMW 320d E90</h3>
         <div class="peca-ref">Ref: Bosch 0124 525 068</div>
+        <div class="peca-vendedor">
+          <span class="dot"></span> GuiPeças · 📍 Leiria · 2.1 km
+        </div>
         <div class="peca-footer">
           <div class="peca-preco">180 €</div>
           <button class="btn-reservar">Reservar</button>
@@ -288,14 +462,19 @@
       </div>
     </div>
 
-    <div class="peca">
+    <!-- PEÇA 2 — GamiPeças -->
+    <div class="peca" style="--empresa-cor:#4C9A6A">
       <div class="peca-img">
         🛑
-        <span class="peca-badge badge-recond">♻️ Novo</span>
+        <span class="peca-badge badge-novo">✨ Novo</span>
+        <span class="peca-empresa">GamiPeças</span>
       </div>
       <div class="peca-body">
         <h3 class="peca-titulo">Discos de travão Brembo (par)</h3>
         <div class="peca-ref">Ref: Brembo 09.A417.11</div>
+        <div class="peca-vendedor">
+          <span class="dot"></span> GamiPeças · 📍 Marinha Grande · 8.4 km
+        </div>
         <div class="peca-footer">
           <div class="peca-preco">210 €</div>
           <button class="btn-reservar">Reservar</button>
@@ -303,30 +482,96 @@
       </div>
     </div>
 
-    <div class="peca">
+    <!-- PEÇA 3 — SamiParts -->
+    <div class="peca" style="--empresa-cor:#E8743B">
       <div class="peca-img">
         💡
         <span class="peca-badge badge-recond">♻️ Recondicionado</span>
+        <span class="peca-empresa">SamiParts</span>
       </div>
       <div class="peca-body">
         <h3 class="peca-titulo">Farol VW Golf VI</h3>
         <div class="peca-ref">Ref: VW 5K1 941 005</div>
+        <div class="peca-vendedor">
+          <span class="dot"></span> SamiParts · 📍 Pombal · 18 km
+        </div>
         <div class="peca-footer">
           <div class="peca-preco">140 €</div>
           <button class="btn-reservar">Reservar</button>
         </div>
       </div>
     </div>
+
+    <!-- PEÇA 4 — GuiPeças -->
+    <div class="peca" style="--empresa-cor:#0B3D5C">
+      <div class="peca-img">
+        ⚙️
+        <span class="peca-badge badge-recond">♻️ Recondicionado</span>
+        <span class="peca-empresa">GuiPeças</span>
+      </div>
+      <div class="peca-body">
+        <h3 class="peca-titulo">Turbo Garrett Seat Leon 1.9 TDI</h3>
+        <div class="peca-ref">Ref: Garrett 716 216-5006</div>
+        <div class="peca-vendedor">
+          <span class="dot"></span> GuiPeças · 📍 Leiria · 2.1 km
+        </div>
+        <div class="peca-footer">
+          <div class="peca-preco">320 €</div>
+          <button class="btn-reservar">Reservar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PEÇA 5 — GamiPeças -->
+    <div class="peca" style="--empresa-cor:#4C9A6A">
+      <div class="peca-img">
+        🔧
+        <span class="peca-badge badge-novo">✨ Novo</span>
+        <span class="peca-empresa">GamiPeças</span>
+      </div>
+      <div class="peca-body">
+        <h3 class="peca-titulo">Amortecedor Monroe Opel Astra (par)</h3>
+        <div class="peca-ref">Ref: Monroe 742 076 SP</div>
+        <div class="peca-vendedor">
+          <span class="dot"></span> GamiPeças · 📍 Marinha Grande · 8.4 km
+        </div>
+        <div class="peca-footer">
+          <div class="peca-preco">165 €</div>
+          <button class="btn-reservar">Reservar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PEÇA 6 — SamiParts -->
+    <div class="peca" style="--empresa-cor:#E8743B">
+      <div class="peca-img">
+        🔌
+        <span class="peca-badge badge-recond">♻️ Recondicionado</span>
+        <span class="peca-empresa">SamiParts</span>
+      </div>
+      <div class="peca-body">
+        <h3 class="peca-titulo">Sensor MAF Mercedes C220</h3>
+        <div class="peca-ref">Ref: Bosch 0280 218 122</div>
+        <div class="peca-vendedor">
+          <span class="dot"></span> SamiParts · 📍 Pombal · 18 km
+        </div>
+        <div class="peca-footer">
+          <div class="peca-preco">85 €</div>
+          <button class="btn-reservar">Reservar</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="info-box">
     <h3>♻️ Impacto Circular</h3>
-    <p>12 430 peças reutilizadas · 340t CO₂ evitado · 89 PMEs ativas</p>
+    <p>12 430 peças reutilizadas · 340t CO₂ evitado · 3 empresas parceiras ativas</p>
   </div>
 </div>
 
 <footer>
-  <strong>AutoLeiria Circular</strong> · A peça certa, do vizinho certo, hoje.
+  <strong>AutoLeiria Circular</strong> · GuiPeças · GamiPeças · SamiParts
 </footer>
 
 <script>
@@ -343,7 +588,6 @@ function toggleTheme(){
   }
 }
 
-// Aplica tema do sistema ao abrir
 window.addEventListener('DOMContentLoaded', function(){
   var prefereDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   if(prefereDark){
